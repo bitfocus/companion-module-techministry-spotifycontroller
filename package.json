@@ -1,0 +1,30 @@
+{
+	"name": "techministry-spotifycontroller",
+	"version": "1.0.0",
+	"api_version": "1.0.0",
+	"keywords": [
+		"Spotify",
+		"Mac"
+	],
+	"manufacturer": "Tech Ministry",
+	"product": "Spotify Controller",
+	"shortname": "spotify-controller",
+	"description": "",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bitfocus/companion-module-techministry-spotifycontroller.git"
+	},
+	"author": "Joseph Adams <josephdadams@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/bitfocus/companion-module-techministry-spotifycontroller/issues"
+	},
+	"homepage": "https://github.com/bitfocus/companion-module-techministry-spotifycontroller#readme",
+	"dependencies": {
+		"socket.io-client": "^4.5.1"
+	}
+}
