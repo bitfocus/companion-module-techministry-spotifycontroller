@@ -283,6 +283,11 @@ instance.prototype.init_connection = function() {
 			self.checkVariables();
 			self.checkFeedbacks();
 		});
+
+		self.socket.on('error', function(error) {
+			self.status(self.STATUS_ERROR);
+			self.log('error', 'Error from spotify-controller: ' + error);
+		});
 	}
 };
 
