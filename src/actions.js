@@ -55,14 +55,14 @@ module.exports = {
 				},
 				{
 					type: 'textinput',
-					id: 'album',
-					label: 'Album ID',
+					id: 'context',
+					label: 'Context ID',
 					default: 'spotify:album:'
 
 				}
 			],
 			callback: function(action, bank) {
-				self.sendCommand('playTrackInContext', track, album);
+				self.sendCommand('playTrackInContext', track, context);
 			}
 		};
 
