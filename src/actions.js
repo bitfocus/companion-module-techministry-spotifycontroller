@@ -39,6 +39,7 @@ module.exports = {
 				}
 			],
 			callback: function(action, bank) {
+				let track = action.options.track;
 				self.sendCommand('playTrack', track);
 			}
 		};
@@ -62,6 +63,8 @@ module.exports = {
 				}
 			],
 			callback: function(action, bank) {
+				let track = action.options.track;
+				let context = action.options.context;
 				self.sendCommand('playTrackInContext', track, context);
 			}
 		};
@@ -111,6 +114,7 @@ module.exports = {
 				  }
 			],
 			callback: function(action, bank) {
+				let volume = action.options.volume;
 				self.sendCommand('setVolume', volume);
 			}
 		};

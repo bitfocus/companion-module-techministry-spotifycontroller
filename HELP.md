@@ -11,7 +11,7 @@ This module will allow you to control and see status of Spotify running on MacOS
 **Available Actions:**
 * Play/Pause/Toggle
 * Play Track by ID
-* Play Track by ID in Context (Album, etc.)
+* Play Track by ID in Context (Album, Playlist, etc.)
 * Next/Previous
 * Volume Up/Down/Set
 * Mute/Unmute
