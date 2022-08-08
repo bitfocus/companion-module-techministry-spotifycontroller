@@ -40,7 +40,7 @@ module.exports = {
 			],
 			callback: function(action, bank) {
 				let track = action.options.track;
-				self.sendCommand('playTrack', track);
+				self.sendCommand('playtrack', track);
 			}
 		};
 
@@ -65,7 +65,7 @@ module.exports = {
 			callback: function(action, bank) {
 				let track = action.options.track;
 				let context = action.options.context;
-				self.sendCommand('playTrackInContext', track, context);
+				self.sendCommand('playtrackincontext', track, context);
 			}
 		};
 
@@ -116,6 +116,28 @@ module.exports = {
 			callback: function(action, bank) {
 				let volume = action.options.volume;
 				self.sendCommand('setVolume', volume);
+			}
+		};
+
+		actions.rampVolume = {
+			label: 'Ramp Volume',
+			options: [
+				{
+					type: 'number',
+					label: 'Volume',
+					id: 'volume',
+					tooltip: 'Ramp the volume level to this percent (0-100)',
+					min: 0,
+					max: 100,
+					default: 50,
+					step: 1,
+					required: true,
+					range: false
+				},
+			],
+			callback: function(action, bank) {
+				let volume = action.options.volume;
+				self.sendCommand('rampVolume', volume);
 			}
 		};
 
