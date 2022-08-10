@@ -1,4 +1,4 @@
-// Televic D-CERNO
+// techministry-spotifycontroller
 
 var instance_skel = require('../../../instance_skel');
 
