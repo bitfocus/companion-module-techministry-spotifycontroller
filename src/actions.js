@@ -27,6 +27,25 @@ module.exports = {
 			}
 		};
 
+		actions.playerPosition = {
+			label: 'Set Player Position',
+			options:
+			[
+				{
+					type: 'number',
+					label: 'Seconds',
+					id: 'seconds',
+					tooltip: 'Number of seconds to move forward or backward (use negative number)',
+					default: 10,
+					required: true,
+					range: false
+				}
+			],
+			callback: function(action, bank) {
+				self.sendCommand('playerPosition', action.options.seconds);
+			}
+		};
+
 		actions.playTrack = {
 			label: 'Play Track By ID',
 			options: [
@@ -111,7 +130,7 @@ module.exports = {
 					step: 1,
 					required: true,
 					range: false
-				  }
+				}
 			],
 			callback: function(action, bank) {
 				let volume = action.options.volume;
