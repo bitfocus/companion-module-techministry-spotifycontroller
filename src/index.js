@@ -236,7 +236,7 @@ instance.prototype.init_connection = function() {
 			self.log('info', 'Connected to spotify-controller. Retrieving data.');
 			self.STATUS.information = 'Connected';
 			self.checkVariables();
-
+			self.getState();
 			self.init_polling(); //init polling, if enabled
 		});
 

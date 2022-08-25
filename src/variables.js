@@ -28,6 +28,8 @@ module.exports = {
 		variables.push({ name: 'trackid', 			label: 'Track ID'});
 		variables.push({ name: 'player_state',		label: 'Player State'});
 		variables.push({ name: 'volume', 			label: 'Current Volume Level'});
+		variables.push({ name: 'repeat', 			label: 'Repeat On/Off'});
+		variables.push({ name: 'shuffle', 			label: 'Shuffle On/Off'});
 		variables.push({ name: 'control_status',	label: 'Control Status'});
 
 		return variables
@@ -55,6 +57,8 @@ module.exports = {
 			self.setVariable('trackid', 		self.STATUS.playbackInfo.trackId);
 			self.setVariable('player_state',	self.STATUS.playbackInfo.playerState);			
 			self.setVariable('volume', 			self.STATUS.state.volume);
+			self.setVariable('repeat', 			self.STATUS.state.isRepeating ? 'On' : 'Off');
+			self.setVariable('shuffle', 		self.STATUS.state.isShuffling ? 'On' : 'Off');
 			self.setVariable('control_status', 	self.STATUS.controlStatus ? 'Enabled' : 'Disabled');
 		}
 		catch(error) {

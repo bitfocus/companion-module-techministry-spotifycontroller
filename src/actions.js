@@ -27,8 +27,8 @@ module.exports = {
 			}
 		};
 
-		actions.playerPosition = {
-			label: 'Set Player Position',
+		actions.movePlayerPosition = {
+			label: 'Move Player Position',
 			options:
 			[
 				{
@@ -42,7 +42,26 @@ module.exports = {
 				}
 			],
 			callback: function(action, bank) {
-				self.sendCommand('playerPosition', action.options.seconds);
+				self.sendCommand('movePlayerPosition', action.options.seconds);
+			}
+		};
+
+		actions.setPlayerPosition = {
+			label: 'Set Player Position',
+			options:
+			[
+				{
+					type: 'number',
+					label: 'Seconds',
+					id: 'seconds',
+					tooltip: 'Set Player Position to this position (in seconds)',
+					default: 10,
+					required: true,
+					range: false
+				}
+			],
+			callback: function(action, bank) {
+				self.sendCommand('setPlayerPosition', action.options.seconds);
 			}
 		};
 

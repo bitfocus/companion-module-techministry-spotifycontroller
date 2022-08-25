@@ -45,6 +45,68 @@ module.exports = {
 			}
 		}
 
+		feedbacks.shuffling = {
+			type: 'boolean',
+			label: 'Show Shuffling State On Button',
+			description: 'Indicate if Shuffle is in X Status',
+			style: {
+				color: foregroundColor,
+				bgcolor: backgroundColorRed,
+			},
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Indicate in X Status',
+					id: 'state',
+					default: 0,
+					choices: [
+						{ id: false, label: 'Off'},
+						{ id: true, label: 'On'}
+					]
+				}
+			],
+			callback: function (feedback, bank) {
+				let opt = feedback.options;
+
+				if (self.STATUS.state.isShuffling == opt.state) {
+					return true;
+				}
+
+				return false
+			}
+		}
+
+		feedbacks.repeating = {
+			type: 'boolean',
+			label: 'Show Repeating State On Button',
+			description: 'Indicate if Repeat is in X Status',
+			style: {
+				color: foregroundColor,
+				bgcolor: backgroundColorRed,
+			},
+			options: [
+				{
+					type: 'dropdown',
+					label: 'Indicate in X Status',
+					id: 'state',
+					default: 0,
+					choices: [
+						{ id: false, label: 'Off'},
+						{ id: true, label: 'On'}
+					]
+				}
+			],
+			callback: function (feedback, bank) {
+				let opt = feedback.options;
+
+				if (self.STATUS.state.isRepeating == opt.state) {
+					return true;
+				}
+
+				return false
+			}
+		}
+
 
 		return feedbacks
 	}
