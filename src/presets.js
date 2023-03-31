@@ -1,33 +1,36 @@
+const { combineRgb } = require('@companion-module/base')
+
 module.exports = {
-	setPresets: function () {
-		let self = this;
+	initPresets: function () {
 		let presets = [];
 
-		const foregroundColor = self.rgb(255, 255, 255) // White
-		const foregroundColorBlack = self.rgb(0, 0, 0) // Black
-		const backgroundColorRed = self.rgb(255, 0, 0) // Red
-		const backgroundColorWhite = self.rgb(255, 255, 255) // White
+		const foregroundColor = combineRgb(255, 255, 255) // White
+		const backgroundColorRed = combineRgb(255, 0, 0) // Red
 
 		presets.push({
+			type: 'button',
 			category: 'Playback',
-			label: 'Play',
-			bank: {
-					style: 'png',
-					text: '',
-					png64: self.ICON_PLAY_INACTIVE,
-					pngalignment: 'center:center',
+			name: 'Play',
+			style: {
+					text: 'PLAY',
 					size: '18',
-					color: '16777215',
-					bgcolor: self.rgb(0, 0, 0),
+					color: combineRgb(255, 255, 255),
+					bgcolor: combineRgb(0, 0, 0)
 			},
-			actions: [
+			steps: [
 				{
-					action: 'play'
-				}
+					down: [
+						{
+							actionId: 'play',
+							options: {}
+						}
+					],
+					up: [],
+				},
 			],
 			feedbacks: [
 				{
-					type: 'playbackState',
+					feedbackId: 'playbackState',
 					options: {
 						state: 'Playing'
 					},
@@ -40,25 +43,29 @@ module.exports = {
 		});
 
 		presets.push({
+			type: 'button',
 			category: 'Playback',
-			label: 'Pause',
-			bank: {
-				style: 'png',
-				text: '',
-				png64: self.ICON_PAUSE_INACTIVE,
-				pngalignment: 'center:center',
+			name: 'Pause',
+			style: {
+				text: 'PAUSE',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
-		},
-			actions: [
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0)
+			},
+			steps: [
 				{
-					action: 'pause'
-				}
+					down: [
+						{
+							actionId: 'pause',
+							options: {}
+						}
+					],
+					up: [],
+				},
 			],
 			feedbacks: [
 				{
-					type: 'playbackState',
+					feedbackId: 'playbackState',
 					options: {
 						state: 'Paused'
 					},
@@ -71,163 +78,162 @@ module.exports = {
 		});
 
 		presets.push({
+			type: 'button',
 			category: 'Playback',
-			label: 'Playback Position',
-			bank: {
-				style: 'text',
+			name: 'Playback Position',
+			style: {
 				text: '$(spotify-controller:position_hms)',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0)
-			}
-		});
-
-		/*presets.push({
-			category: 'Playback',
-			label: 'Stop',
-			bank: {
-				style: 'png',
-				text: '',
-				png64: self.ICON_STOP_INACTIVE,
-				pngalignment: 'center:center',
-				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
-		},
-			actions: [
-				{
-					action: 'stop'
-				}
-			],
-			feedbacks: [
-				{
-					type: 'playbackState',
-					options: {
-						state: 'Stopped'
-					},
-					style: {
-						color: foregroundColor,
-						bgcolor: backgroundColorRed
-					}
-				}
-			]
-		});
-
-		presets.push({
-			category: 'Playback',
-			label: 'Toggle',
-			bank: {
-				style: 'text',
-				text: 'TOGGLE',
-				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0)
 			},
-			actions: [
+			steps: [
 				{
-					action: 'playToggle'
-				}
-			]
-		});*/
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: []
+		});
 
 		presets.push({
+			type: 'button',
 			category: 'Volume',
-			label: 'Volume Up',
-			bank: {
-				style: 'text',
+			name: 'Volume Up',
+			style: {
 				text: 'VOL +',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0)
 			},
-			actions: [
+			steps: [
 				{
-					action: 'volumeUp'
-				}
-			]
+					down: [
+						{
+							actionId: 'volumeUp',
+							options: {}
+						}
+					],
+					up: [],
+				},
+			],
+			feedbacks: []
 		});
 
 		presets.push({
+			type: 'button',
 			category: 'Volume',
-			label: 'Volume Down',
-			bank: {
-				style: 'text',
+			name: 'Volume Down',
+			style: {
 				text: 'VOL -',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0)
 			},
-			actions: [
+			steps: [
 				{
-					action: 'volumeDown'
-				}
-			]
+					down: [
+						{
+							actionId: 'volumeDown',
+							options: {}
+						}
+					],
+					up: [],
+				},
+			],
+			feedbacks: []
 		});
 
 		presets.push({
+			type: 'button',
 			category: 'Volume',
-			label: 'Volume 50%',
-			bank: {
-				style: 'text',
+			name: 'Volume 50%',
+			style: {
 				text: 'VOL 50%',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0)
 			},
-			actions: [
+			steps: [
 				{
-					action: 'setVolume',
-					options: {
-						volume: 50
-					}
-				}
-			]
+					down: [
+						{
+							actionId: 'setVolume',
+							options: {
+								volume: 50
+							}
+						}
+					],
+					up: [],
+				},
+			],
+			feedbacks: []
 		});
 
 		presets.push({
+			type: 'button',
 			category: 'Volume',
-			label: 'Volume 100%',
-			bank: {
-				style: 'text',
+			name: 'Volume 100%',
+			style: {
 				text: 'VOL 100%',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(255, 0, 0)
 			},
-			actions: [
+			steps: [
 				{
-					action: 'setVolume',
-					options: {
-						volume: 100
-					}
-				}
-			]
+					down: [
+						{
+							actionId: 'setVolume',
+							options: {
+								volume: 100
+							}
+						}
+					],
+					up: [],
+				},
+			],
+			feedbacks: []
 		});
 
 		presets.push({
+			type: 'button',
 			category: 'Volume',
-			label: 'Volume Level',
-			bank: {
-				style: 'text',
+			name: 'Volume Level',
+			style: {
 				text: 'VOL:\\n$(spotify-controller:volume)',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
-			}
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0)
+			},
+			steps: [
+				{
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: []
 		});
 
 		presets.push({
+			type: 'button',
 			category: 'Track',
-			label: 'Track Name',
-			bank: {
-				style: 'text',
+			name: 'Track Name',
+			style: {
 				text: 'TRACK:\\n$(spotify-controller:track)',
 				size: '18',
-				color: '16777215',
-				bgcolor: self.rgb(0, 0, 0),
-			}
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0)
+			},
+			steps: [
+				{
+					down: [],
+					up: [],
+				},
+			],
+			feedbacks: []
 		});
 	
-		return presets;
+		this.setPresetDefinitions(presets);
 	}
 }

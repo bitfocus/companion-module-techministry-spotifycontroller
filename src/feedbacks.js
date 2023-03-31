@@ -1,21 +1,20 @@
+const { combineRgb } = require('@companion-module/base')
+
 module.exports = {
 	// ##########################
 	// #### Define Feedbacks ####
 	// ##########################
-	setFeedbacks: function () {
-		let self = this;
+	initFeedbacks: function () {
 		let feedbacks = {};
 
-		const foregroundColor = self.rgb(255, 255, 255) // White
-		const backgroundColorRed = self.rgb(255, 0, 0) // Red
-		const backgroundColorGreen = self.rgb(0, 255, 0) // Green
-		const backgroundColorOrange = self.rgb(255, 102, 0) // Orange
+		const foregroundColor = combineRgb(255, 255, 255) // White
+		const backgroundColorRed = combineRgb(255, 0, 0) // Red
 
 		feedbacks.playbackState = {
 			type: 'boolean',
-			label: 'Show Player State On Button',
+			name: 'Show Player State On Button',
 			description: 'Indicate if Playback is in X Status',
-			style: {
+			defaultStyle: {
 				color: foregroundColor,
 				bgcolor: backgroundColorRed,
 			},
@@ -24,7 +23,7 @@ module.exports = {
 					type: 'dropdown',
 					label: 'Indicate in X Status',
 					id: 'state',
-					default: 0,
+					default: 'Playing',
 					choices: [
 						{ id: 'Playing', label: 'Playing'},
 						{ id: 'Paused', label: 'Paused'},
@@ -32,11 +31,11 @@ module.exports = {
 					]
 				}
 			],
-			callback: function (feedback, bank) {
-				let opt = feedback.options;
+			callback: async (event) => {
+				let opt = event.options;
 
-				if (self.STATUS.playbackInfo && self.STATUS.playbackInfo.playerState) {
-					if (self.STATUS.playbackInfo.playerState == opt.state) {
+				if (this.STATUS.playbackInfo && this.STATUS.playbackInfo.playerState) {
+					if (this.STATUS.playbackInfo.playerState == opt.state) {
 						return true;
 					}
 				}
@@ -47,9 +46,9 @@ module.exports = {
 
 		feedbacks.shuffling = {
 			type: 'boolean',
-			label: 'Show Shuffling State On Button',
+			name: 'Show Shuffling State On Button',
 			description: 'Indicate if Shuffle is in X Status',
-			style: {
+			defaultStyle: {
 				color: foregroundColor,
 				bgcolor: backgroundColorRed,
 			},
@@ -58,17 +57,17 @@ module.exports = {
 					type: 'dropdown',
 					label: 'Indicate in X Status',
 					id: 'state',
-					default: 0,
+					default: true,
 					choices: [
 						{ id: false, label: 'Off'},
 						{ id: true, label: 'On'}
 					]
 				}
 			],
-			callback: function (feedback, bank) {
-				let opt = feedback.options;
+			callback: async (event) => {
+				let opt = event.options;
 
-				if (self.STATUS.state.isShuffling == opt.state) {
+				if (this.STATUS.state.isShuffling == opt.state) {
 					return true;
 				}
 
@@ -78,9 +77,9 @@ module.exports = {
 
 		feedbacks.repeating = {
 			type: 'boolean',
-			label: 'Show Repeating State On Button',
+			name: 'Show Repeating State On Button',
 			description: 'Indicate if Repeat is in X Status',
-			style: {
+			defaultStyle: {
 				color: foregroundColor,
 				bgcolor: backgroundColorRed,
 			},
@@ -89,17 +88,17 @@ module.exports = {
 					type: 'dropdown',
 					label: 'Indicate in X Status',
 					id: 'state',
-					default: 0,
+					default: true,
 					choices: [
 						{ id: false, label: 'Off'},
 						{ id: true, label: 'On'}
 					]
 				}
 			],
-			callback: function (feedback, bank) {
-				let opt = feedback.options;
+			callback: async (event) => {
+				let opt = event.options;
 
-				if (self.STATUS.state.isRepeating == opt.state) {
+				if (this.STATUS.state.isRepeating == opt.state) {
 					return true;
 				}
 
@@ -108,6 +107,6 @@ module.exports = {
 		}
 
 
-		return feedbacks
+		this.setFeedbackDefinitions(feedbacks);
 	}
 }

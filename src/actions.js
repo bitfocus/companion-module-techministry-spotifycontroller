@@ -2,33 +2,36 @@ module.exports = {
 	// ##########################
 	// #### Instance Actions ####
 	// ##########################
-	setActions: function () {
+	initActions: function () {
 		let self = this;
 		let actions = {};
 
 		actions.play = {
-			label: 'Play',
-			callback: function(action, bank) {
+			name: 'Play',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('play');
 			}
 		};
 
 		actions.pause = {
-			label: 'Pause',
-			callback: function(action, bank) {
+			name: 'Pause',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('pause');
 			}
 		};
 
 		actions.playToggle = {
-			label: 'Play/Pause Toggle',
-			callback: function(action, bank) {
+			name: 'Play/Pause Toggle',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('playToggle');
 			}
 		};
 
 		actions.movePlayerPosition = {
-			label: 'Move Player Position',
+			name: 'Move Player Position',
 			options:
 			[
 				{
@@ -41,13 +44,13 @@ module.exports = {
 					range: false
 				}
 			],
-			callback: function(action, bank) {
+			callback: async (event) => {
 				self.sendCommand('movePlayerPosition', action.options.seconds);
 			}
 		};
 
 		actions.setPlayerPosition = {
-			label: 'Set Player Position',
+			name: 'Set Player Position',
 			options:
 			[
 				{
@@ -60,13 +63,13 @@ module.exports = {
 					range: false
 				}
 			],
-			callback: function(action, bank) {
+			callback: async (event) => {
 				self.sendCommand('setPlayerPosition', action.options.seconds);
 			}
 		};
 
 		actions.playTrack = {
-			label: 'Play Track By ID',
+			name: 'Play Track By ID',
 			options: [
 				{
 					type: 'textinput',
@@ -76,14 +79,14 @@ module.exports = {
 
 				}
 			],
-			callback: function(action, bank) {
+			callback: async (event) => {
 				let track = action.options.track;
 				self.sendCommand('playtrack', track);
 			}
 		};
 
 		actions.playTrackInContext = {
-			label: 'Play Track In Context By ID',
+			name: 'Play Track In Context By ID',
 			options: [
 				{
 					type: 'textinput',
@@ -100,7 +103,7 @@ module.exports = {
 
 				}
 			],
-			callback: function(action, bank) {
+			callback: async (event) => {
 				let track = action.options.track;
 				let context = action.options.context;
 				self.sendCommand('playtrackincontext', track, context);
@@ -108,35 +111,39 @@ module.exports = {
 		};
 
 		actions.next = {
-			label: 'Next Track',
-			callback: function(action, bank) {
+			name: 'Next Track',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('next');
 			}
 		};
 
 		actions.previous = {
-			label: 'Previous Track',
-			callback: function(action, bank) {
+			name: 'Previous Track',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('previous');
 			}
 		};
 
 		actions.volumeUp = {
-			label: 'Volume Up',
-			callback: function(action, bank) {
+			name: 'Volume Up',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('volumeUp');
 			}
 		};
 
 		actions.volumeDown = {
-			label: 'Volume Down',
-			callback: function(action, bank) {
+			name: 'Volume Down',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('volumeDown');
 			}
 		};
 
 		actions.setVolume = {
-			label: 'Set Volume',
+			name: 'Set Volume',
 			options: [
 				{
 					type: 'number',
@@ -151,14 +158,14 @@ module.exports = {
 					range: false
 				}
 			],
-			callback: function(action, bank) {
+			callback: async (event) => {
 				let volume = action.options.volume;
 				self.sendCommand('setVolume', volume);
 			}
 		};
 
 		actions.rampVolume = {
-			label: 'Ramp Volume',
+			name: 'Ramp Volume',
 			options: [
 				{
 					type: 'number',
@@ -173,54 +180,60 @@ module.exports = {
 					range: false
 				},
 			],
-			callback: function(action, bank) {
+			callback: async (event) => {
 				let volume = action.options.volume;
 				self.sendCommand('rampVolume', volume);
 			}
 		};
 
 		actions.mute = {
-			label: 'Volume Mute',
-			callback: function(action, bank) {
+			name: 'Volume Mute',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('mute');
 			}
 		};
 
 		actions.unmute = {
-			label: 'Volume Unmute',
-			callback: function(action, bank) {
+			name: 'Volume Unmute',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('unmute');
 			}
 		};
 
 		actions.repeatOn = {
-			label: 'Repeat On',
-			callback: function(action, bank) {
+			name: 'Repeat On',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('repeatOn');
 			}
 		};
 
 		actions.repeatOff = {
-			label: 'Repeat Off',
-			callback: function(action, bank) {
+			name: 'Repeat Off',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('repeatOff');
 			}
 		};
 
 		actions.shuffleOn = {
-			label: 'Shuffle On',
-			callback: function(action, bank) {
+			name: 'Shuffle On',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('shuffleOn');
 			}
 		};
 
 		actions.shuffleOff = {
-			label: 'Shuffle Off',
-			callback: function(action, bank) {
+			name: 'Shuffle Off',
+			options: [],
+			callback: async (event) => {
 				self.sendCommand('shuffleOff');
 			}
 		};
 
-		return actions
+		this.setActionDefinitions(actions);
 	}
 }

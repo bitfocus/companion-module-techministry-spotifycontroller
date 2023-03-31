@@ -14,25 +14,24 @@ module.exports = {
 	// ##########################
 	// #### Define Variables ####
 	// ##########################
-	setVariables: function () {
-		let self = this;
+	initVariables: function () {
 		let variables = [];
 
-		variables.push({ name: 'information', 		label: 'Information' });
-		variables.push({ name: 'version', 			label: 'spotify-controller Version' });
-		variables.push({ name: 'name',	 			label: 'Track Name'});
-		variables.push({ name: 'artist', 			label: 'Artist'});
-		variables.push({ name: 'album', 			label: 'Album'});
-		variables.push({ name: 'duration_hms', 		label: 'Track Duration (HMS)'});
-		variables.push({ name: 'position_hms', 		label: 'Playback Position (HMS)'});
-		variables.push({ name: 'trackid', 			label: 'Track ID'});
-		variables.push({ name: 'player_state',		label: 'Player State'});
-		variables.push({ name: 'volume', 			label: 'Current Volume Level'});
-		variables.push({ name: 'repeat', 			label: 'Repeat On/Off'});
-		variables.push({ name: 'shuffle', 			label: 'Shuffle On/Off'});
-		variables.push({ name: 'control_status',	label: 'Control Status'});
+		variables.push({ variableId: 'information', 		name: 'Information' });
+		variables.push({ variableId: 'version', 			name: 'spotify-controller Version' });
+		variables.push({ variableId: 'name',	 			name: 'Track Name'});
+		variables.push({ variableId: 'artist', 				name: 'Artist'});
+		variables.push({ variableId: 'album', 				name: 'Album'});
+		variables.push({ variableId: 'duration_hms', 		name: 'Track Duration (HMS)'});
+		variables.push({ variableId: 'position_hms', 		name: 'Playback Position (HMS)'});
+		variables.push({ variableId: 'trackid', 			name: 'Track ID'});
+		variables.push({ variableId: 'player_state',		name: 'Player State'});
+		variables.push({ variableId: 'volume', 				name: 'Current Volume Level'});
+		variables.push({ variableId: 'repeat', 				name: 'Repeat On/Off'});
+		variables.push({ variableId: 'shuffle', 			name: 'Shuffle On/Off'});
+		variables.push({ variableId: 'control_status',		name: 'Control Status'});
 
-		return variables
+		this.setVariableDefinitions(variables);
 	},
 
 	// #########################
@@ -42,27 +41,26 @@ module.exports = {
 		let self = this;
 
 		try {
-			self.setVariable('information', 	self.STATUS.information);
-			self.setVariable('version', 		self.STATUS.version);
-			self.setVariable('name', 			self.STATUS.playbackInfo.name);
-			self.setVariable('artist', 			self.STATUS.playbackInfo.artist);
-			self.setVariable('album', 			self.STATUS.playbackInfo.album);
-
-			let duration_seconds = Math.round(self.STATUS.playbackInfo.duration / 1000);
-			self.setVariable('duration_hms', 	convertHMS(duration_seconds));
-
-			let position_seconds = Math.round(self.STATUS.playbackInfo.playbackPosition);
-			self.setVariable('position_hms', 	convertHMS(position_seconds));
-
-			self.setVariable('trackid', 		self.STATUS.playbackInfo.trackId);
-			self.setVariable('player_state',	self.STATUS.playbackInfo.playerState);			
-			self.setVariable('volume', 			self.STATUS.state.volume);
-			self.setVariable('repeat', 			self.STATUS.state.isRepeating ? 'On' : 'Off');
-			self.setVariable('shuffle', 		self.STATUS.state.isShuffling ? 'On' : 'Off');
-			self.setVariable('control_status', 	self.STATUS.controlStatus ? 'Enabled' : 'Disabled');
+			this.setVariableValues(
+				{
+					'information': 		this.STATUS.information,
+					'version': 			this.STATUS.version,
+					'name': 			this.STATUS.playbackInfo.name,
+					'artist': 			this.STATUS.playbackInfo.artist,
+					'album': 			this.STATUS.playbackInfo.album,
+					'duration_hms': 	convertHMS(Math.round(this.STATUS.playbackInfo.duration / 1000)),
+					'position_hms': 	convertHMS(Math.round(this.STATUS.playbackInfo.playbackPosition)),
+					'trackid': 			this.STATUS.playbackInfo.trackId,
+					'player_state':		this.STATUS.playbackInfo.playerState,
+					'volume': 			this.STATUS.state.volume,
+					'repeat': 			this.STATUS.state.repeat ? 'True' : 'False',
+					'shuffle': 			this.STATUS.state.shuffle ? 'True' : 'False',
+					'control_status': 	this.STATUS.controlStatus ? 'True' : 'False'
+				}
+			)
 		}
 		catch(error) {
-			self.log('error', 'Error setting Variables: ' + String(error));
+			this.log('error', 'Error setting Variables: ' + String(error));
 		}
 	}
 }
