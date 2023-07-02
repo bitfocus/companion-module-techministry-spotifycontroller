@@ -9,7 +9,7 @@ module.exports = {
 		actions.play = {
 			name: 'Play',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('play');
 			}
 		};
@@ -17,7 +17,7 @@ module.exports = {
 		actions.pause = {
 			name: 'Pause',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('pause');
 			}
 		};
@@ -25,7 +25,7 @@ module.exports = {
 		actions.playToggle = {
 			name: 'Play/Pause Toggle',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('playToggle');
 			}
 		};
@@ -44,7 +44,7 @@ module.exports = {
 					range: false
 				}
 			],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('movePlayerPosition', action.options.seconds);
 			}
 		};
@@ -63,7 +63,7 @@ module.exports = {
 					range: false
 				}
 			],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('setPlayerPosition', action.options.seconds);
 			}
 		};
@@ -79,7 +79,7 @@ module.exports = {
 
 				}
 			],
-			callback: async (event) => {
+			callback: async (action) => {
 				let track = action.options.track;
 				self.sendCommand('playtrack', track);
 			}
@@ -103,7 +103,7 @@ module.exports = {
 
 				}
 			],
-			callback: async (event) => {
+			callback: async (action) => {
 				let track = action.options.track;
 				let context = action.options.context;
 				self.sendCommand('playtrackincontext', track, context);
@@ -113,7 +113,7 @@ module.exports = {
 		actions.next = {
 			name: 'Next Track',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('next');
 			}
 		};
@@ -121,7 +121,7 @@ module.exports = {
 		actions.previous = {
 			name: 'Previous Track',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('previous');
 			}
 		};
@@ -129,7 +129,7 @@ module.exports = {
 		actions.volumeUp = {
 			name: 'Volume Up',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('volumeUp');
 			}
 		};
@@ -137,7 +137,7 @@ module.exports = {
 		actions.volumeDown = {
 			name: 'Volume Down',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('volumeDown');
 			}
 		};
@@ -158,7 +158,7 @@ module.exports = {
 					range: false
 				}
 			],
-			callback: async (event) => {
+			callback: async (action) => {
 				let volume = action.options.volume;
 				self.sendCommand('setVolume', volume);
 			}
@@ -180,7 +180,7 @@ module.exports = {
 					range: false
 				},
 			],
-			callback: async (event) => {
+			callback: async (action) => {
 				let volume = action.options.volume;
 				self.sendCommand('rampVolume', volume);
 			}
@@ -189,7 +189,7 @@ module.exports = {
 		actions.mute = {
 			name: 'Volume Mute',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('mute');
 			}
 		};
@@ -197,7 +197,7 @@ module.exports = {
 		actions.unmute = {
 			name: 'Volume Unmute',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('unmute');
 			}
 		};
@@ -205,7 +205,7 @@ module.exports = {
 		actions.repeatOn = {
 			name: 'Repeat On',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('repeatOn');
 			}
 		};
@@ -213,7 +213,7 @@ module.exports = {
 		actions.repeatOff = {
 			name: 'Repeat Off',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('repeatOff');
 			}
 		};
@@ -221,7 +221,7 @@ module.exports = {
 		actions.shuffleOn = {
 			name: 'Shuffle On',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('shuffleOn');
 			}
 		};
@@ -229,7 +229,7 @@ module.exports = {
 		actions.shuffleOff = {
 			name: 'Shuffle Off',
 			options: [],
-			callback: async (event) => {
+			callback: async (action) => {
 				self.sendCommand('shuffleOff');
 			}
 		};
