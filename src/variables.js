@@ -27,6 +27,7 @@ module.exports = {
 		variables.push({ variableId: 'trackid', 			name: 'Track ID'});
 		variables.push({ variableId: 'player_state',		name: 'Player State'});
 		variables.push({ variableId: 'volume', 				name: 'Current Volume Level'});
+		variables.push({ variableId: 'rampingState', 		name: 'Volume Ramping State'})
 		variables.push({ variableId: 'repeat', 				name: 'Repeat On/Off'});
 		variables.push({ variableId: 'shuffle', 			name: 'Shuffle On/Off'});
 		variables.push({ variableId: 'control_status',		name: 'Control Status'});
@@ -53,6 +54,7 @@ module.exports = {
 					'trackid': 			this.STATUS.playbackInfo.trackId,
 					'player_state':		this.STATUS.playbackInfo.playerState,
 					'volume': 			this.STATUS.state.volume,
+					'rampingState': 	this.STATUS.rampingState ? 'Currently Ramping' : 'Not Ramping',
 					'repeat': 			this.STATUS.state.repeat ? 'True' : 'False',
 					'shuffle': 			this.STATUS.state.shuffle ? 'True' : 'False',
 					'control_status': 	this.STATUS.controlStatus ? 'True' : 'False'

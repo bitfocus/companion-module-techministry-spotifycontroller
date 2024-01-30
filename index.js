@@ -43,6 +43,7 @@ class moduleInstance extends InstanceBase {
 			state: {
 				volume: ''
 			},
+			rampingState: false,
 			controlStatus: false
 		};
 	}
@@ -126,6 +127,13 @@ class moduleInstance extends InstanceBase {
 				self.checkVariables();
 				self.checkFeedbacks();
 			});
+
+			this.socket.on('ramping_state', function(data) {
+				self.STATUS.rampingState = data;
+	
+				self.checkVariables();
+				self.checkFeedbacks();
+			});
 	
 			this.socket.on('control_status', function(status) {
 				self.STATUS.controlStatus = status;
@@ -171,7 +179,7 @@ class moduleInstance extends InstanceBase {
 		this.sendCommand('state');
 	}
 
-	sendCommand(cmd, arg1 = null, arg2 = null) {	
+	sendCommand(cmd, arg1 = null, arg2 = null, arg3 = null) {	
 		if (this.socket !== undefined) {
 			if (this.config.verbose) {
 				this.log('info', 'Sending: ' + cmd);
@@ -179,7 +187,12 @@ class moduleInstance extends InstanceBase {
 	
 			if (arg1 !== null) {
 				if (arg2 !== null) {
-					this.socket.emit(cmd, arg1, arg2);
+					if (arg3 !== null) {
+						this.socket.emit(cmd, arg1, arg2, arg3);
+					}
+					else {
+						this.socket.emit(cmd, arg1, arg2);
+					}
 				}
 				else {
 					this.socket.emit(cmd, arg1);

@@ -169,7 +169,7 @@ module.exports = {
 			options: [
 				{
 					type: 'number',
-					label: 'Volume',
+					label: 'Set Volume Level To (0-100)',
 					id: 'volume',
 					tooltip: 'Ramp the volume level to this percent (0-100)',
 					min: 0,
@@ -179,10 +179,36 @@ module.exports = {
 					required: true,
 					range: false
 				},
+				{
+					type: 'number',
+					label: 'Change Percent',
+					id: 'changePercent',
+					tooltip: 'The percent to change the volume in each step',
+					min: 1,
+					max: 10,
+					default: 5,
+					step: 1,
+					required: true,
+					range: false
+				},
+				{
+					type: 'number',
+					label: 'Ramp Time',
+					id: 'rampTime',
+					tooltip: 'The amount of time (in seconds) to take to complete the ramp',
+					min: 3,
+					max: 30,
+					default: 5,
+					step: 1,
+					required: true,
+					range: false
+				}
 			],
 			callback: async (action) => {
-				let volume = action.options.volume;
-				self.sendCommand('rampVolume', volume);
+				let volume = parseInt(action.options.volume);
+				let changePercent = parseInt(action.options.changePercent);
+				let rampTime = parseInt(action.options.rampTime);
+				self.sendCommand('rampVolume', volume, changePercent, rampTime);
 			}
 		};
 
