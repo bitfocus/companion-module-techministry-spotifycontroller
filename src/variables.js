@@ -55,8 +55,8 @@ module.exports = {
 					'player_state':		this.STATUS.playbackInfo.playerState,
 					'volume': 			this.STATUS.state.volume,
 					'rampingState': 	this.STATUS.rampingState ? 'Currently Ramping' : 'Not Ramping',
-					'repeat': 			this.STATUS.state.repeat ? 'True' : 'False',
-					'shuffle': 			this.STATUS.state.shuffle ? 'True' : 'False',
+					'repeat': 			this.STATUS.state.isRepeating ? 'True' : 'False',
+					'shuffle': 			this.STATUS.state.isShuffling ? 'True' : 'False',
 					'control_status': 	this.STATUS.controlStatus ? 'True' : 'False'
 				}
 			)
