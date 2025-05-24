@@ -1,4 +1,3 @@
-
 # Tech Ministry Spotify Controller
 
 This module allows you to control and view the status of Spotify running on a Mac or Windows computer.
@@ -21,21 +20,21 @@ Requires the free [spotify-controller](http://github.com/josephdadams/spotify-co
 
 ## Available Actions
 
-| Action                        | Mac  | Windows |
-|-------------------------------|:----:|:-------:|
-| Play/Pause/Toggle             | ✅   | ❌      |
-| Play Track by ID              | ✅   | ✅      |
-| Play Track by ID in Context   | ✅   | ✅      |
-| Next/Previous                 | ✅   | ❌      |
-| Set Player Position (Seek)    | ✅   | ❌      |
-| Volume Up/Down/Set/Ramp       | ✅   | ❌      |
-| Mute/Unmute                   | ✅   | ❌      |
-| Repeat On/Off/Toggle          | ✅   | ❌      |
-| Shuffle On/Off/Toggle         | ✅   | ❌      |
+| Action                      | Mac | Windows |
+| --------------------------- | :-: | :-----: |
+| Play/Pause/Toggle           | ✅  |   ❌    |
+| Play Track by ID            | ✅  |   ✅    |
+| Play Track by ID in Context | ✅  |   ✅    |
+| Next/Previous               | ✅  |   ❌    |
+| Set Player Position (Seek)  | ✅  |   ❌    |
+| Volume Up/Down/Set/Ramp     | ✅  |   ❌    |
+| Mute/Unmute                 | ✅  |   ❌    |
+| Repeat On/Off/Toggle        | ✅  |   ❌    |
+| Shuffle On/Off/Toggle       | ✅  |   ❌    |
 
 ## Available Variables
 
-*(All available on Mac; limited on Windows)*
+_(All available on Mac; limited on Windows)_
 
 - **Information/Status**
 - **Version**
@@ -50,11 +49,11 @@ Requires the free [spotify-controller](http://github.com/josephdadams/spotify-co
 
 ## Available Feedbacks
 
-- Change button color if playback is in **X** state (Playing, Paused, Stopped) *(Mac only)*
+- Change button color if playback is in **X** state (Playing, Paused, Stopped) _(Mac only)_
 
 ## Available Presets
 
 - Play/Pause (with icons)
 - Volume Up/Down/50%/100%
-- Volume Level on Button *(Mac only)*
+- Volume Level on Button _(Mac only)_
 - Current Track Name on Button

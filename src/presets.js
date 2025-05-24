@@ -2,7 +2,7 @@ const { combineRgb } = require('@companion-module/base')
 
 module.exports = {
 	initPresets: function () {
-		let presets = [];
+		let presets = []
 
 		const foregroundColor = combineRgb(255, 255, 255) // White
 		const backgroundColorRed = combineRgb(255, 0, 0) // Red
@@ -12,18 +12,18 @@ module.exports = {
 			category: 'Playback',
 			name: 'Play',
 			style: {
-					text: 'PLAY',
-					size: '18',
-					color: combineRgb(255, 255, 255),
-					bgcolor: combineRgb(0, 0, 0)
+				text: 'PLAY',
+				size: '18',
+				color: combineRgb(255, 255, 255),
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
 					down: [
 						{
 							actionId: 'play',
-							options: {}
-						}
+							options: {},
+						},
 					],
 					up: [],
 				},
@@ -32,15 +32,15 @@ module.exports = {
 				{
 					feedbackId: 'playbackState',
 					options: {
-						state: 'Playing'
+						state: 'Playing',
 					},
 					style: {
 						color: foregroundColor,
-						bgcolor: backgroundColorRed
-					}
-				}
-			]
-		});
+						bgcolor: backgroundColorRed,
+					},
+				},
+			],
+		})
 
 		presets.push({
 			type: 'button',
@@ -50,15 +50,15 @@ module.exports = {
 				text: 'PAUSE',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(0, 0, 0)
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
 					down: [
 						{
 							actionId: 'pause',
-							options: {}
-						}
+							options: {},
+						},
 					],
 					up: [],
 				},
@@ -67,15 +67,15 @@ module.exports = {
 				{
 					feedbackId: 'playbackState',
 					options: {
-						state: 'Paused'
+						state: 'Paused',
 					},
 					style: {
 						color: foregroundColor,
-						bgcolor: backgroundColorRed
-					}
-				}
-			]
-		});
+						bgcolor: backgroundColorRed,
+					},
+				},
+			],
+		})
 
 		presets.push({
 			type: 'button',
@@ -85,7 +85,7 @@ module.exports = {
 				text: '$(spotify-controller:position_hms)',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(0, 0, 0)
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
@@ -93,8 +93,8 @@ module.exports = {
 					up: [],
 				},
 			],
-			feedbacks: []
-		});
+			feedbacks: [],
+		})
 
 		presets.push({
 			type: 'button',
@@ -104,21 +104,21 @@ module.exports = {
 				text: 'VOL +',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(0, 0, 0)
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
 					down: [
 						{
 							actionId: 'volumeUp',
-							options: {}
-						}
+							options: {},
+						},
 					],
 					up: [],
 				},
 			],
-			feedbacks: []
-		});
+			feedbacks: [],
+		})
 
 		presets.push({
 			type: 'button',
@@ -128,21 +128,21 @@ module.exports = {
 				text: 'VOL -',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(0, 0, 0)
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
 					down: [
 						{
 							actionId: 'volumeDown',
-							options: {}
-						}
+							options: {},
+						},
 					],
 					up: [],
 				},
 			],
-			feedbacks: []
-		});
+			feedbacks: [],
+		})
 
 		presets.push({
 			type: 'button',
@@ -152,7 +152,7 @@ module.exports = {
 				text: 'VOL 50%',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(0, 0, 0)
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
@@ -160,15 +160,15 @@ module.exports = {
 						{
 							actionId: 'setVolume',
 							options: {
-								volume: 50
-							}
-						}
+								volume: 50,
+							},
+						},
 					],
 					up: [],
 				},
 			],
-			feedbacks: []
-		});
+			feedbacks: [],
+		})
 
 		presets.push({
 			type: 'button',
@@ -178,7 +178,7 @@ module.exports = {
 				text: 'VOL 100%',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(255, 0, 0)
+				bgcolor: combineRgb(255, 0, 0),
 			},
 			steps: [
 				{
@@ -186,15 +186,15 @@ module.exports = {
 						{
 							actionId: 'setVolume',
 							options: {
-								volume: 100
-							}
-						}
+								volume: 100,
+							},
+						},
 					],
 					up: [],
 				},
 			],
-			feedbacks: []
-		});
+			feedbacks: [],
+		})
 
 		presets.push({
 			type: 'button',
@@ -204,7 +204,7 @@ module.exports = {
 				text: 'VOL:\\n$(spotify-controller:volume)',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(0, 0, 0)
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
@@ -212,8 +212,8 @@ module.exports = {
 					up: [],
 				},
 			],
-			feedbacks: []
-		});
+			feedbacks: [],
+		})
 
 		presets.push({
 			type: 'button',
@@ -223,7 +223,7 @@ module.exports = {
 				text: 'TRACK:\\n$(spotify-controller:track)',
 				size: '18',
 				color: combineRgb(255, 255, 255),
-				bgcolor: combineRgb(0, 0, 0)
+				bgcolor: combineRgb(0, 0, 0),
 			},
 			steps: [
 				{
@@ -231,9 +231,9 @@ module.exports = {
 					up: [],
 				},
 			],
-			feedbacks: []
-		});
-	
-		this.setPresetDefinitions(presets);
-	}
+			feedbacks: [],
+		})
+
+		this.setPresetDefinitions(presets)
+	},
 }

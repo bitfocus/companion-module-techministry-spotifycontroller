@@ -28,7 +28,7 @@ module.exports = {
 							</ul>
 						</div>
 					</div>
-				`
+				`,
 			},
 			{
 				type: 'textinput',
@@ -36,7 +36,7 @@ module.exports = {
 				label: 'Mac IP Address',
 				width: 3,
 				default: '127.0.0.1',
-				regex: Regex.IP
+				regex: Regex.IP,
 			},
 			{
 				type: 'textinput',
@@ -44,7 +44,7 @@ module.exports = {
 				label: 'Port',
 				width: 3,
 				default: 8801,
-				regex: Regex.Port
+				regex: Regex.Port,
 			},
 			{
 				type: 'static-text',
@@ -73,14 +73,14 @@ module.exports = {
 						<strong>This could have an undesired performance effect on your machine, depending on the polling rate.</strong>
 						<br>
 					</div>
-				`
+				`,
 			},
 			{
 				type: 'checkbox',
 				id: 'polling',
 				label: 'Enable Polling (experimental)',
 				default: false,
-				width: 3
+				width: 3,
 			},
 			{
 				type: 'textinput',
@@ -106,15 +106,14 @@ module.exports = {
 					<div class="alert alert-info">
 						Enabling this option will put more detail in the log, which can be useful for troubleshooting purposes.
 					</div>
-				`
+				`,
 			},
 			{
 				type: 'checkbox',
 				id: 'verbose',
 				label: 'Enable Verbose Logging',
-				default: false
+				default: false,
 			},
-			
 		]
-	}
+	},
 }

@@ -3,37 +3,36 @@ module.exports = {
 	// #### Instance Actions ####
 	// ##########################
 	initActions: function () {
-		let self = this;
-		let actions = {};
+		let self = this
+		let actions = {}
 
 		actions.play = {
 			name: 'Play',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('play');
-			}
-		};
+				self.sendCommand('play')
+			},
+		}
 
 		actions.pause = {
 			name: 'Pause',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('pause');
-			}
-		};
+				self.sendCommand('pause')
+			},
+		}
 
 		actions.playToggle = {
 			name: 'Play/Pause Toggle',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('playToggle');
-			}
-		};
+				self.sendCommand('playToggle')
+			},
+		}
 
 		actions.movePlayerPosition = {
 			name: 'Move Player Position',
-			options:
-			[
+			options: [
 				{
 					type: 'number',
 					label: 'Seconds',
@@ -41,18 +40,17 @@ module.exports = {
 					tooltip: 'Number of seconds to move forward or backward (use negative number)',
 					default: 10,
 					required: true,
-					range: false
-				}
+					range: false,
+				},
 			],
 			callback: async (action) => {
-				self.sendCommand('movePlayerPosition', action.options.seconds);
-			}
-		};
+				self.sendCommand('movePlayerPosition', action.options.seconds)
+			},
+		}
 
 		actions.setPlayerPosition = {
 			name: 'Set Player Position',
-			options:
-			[
+			options: [
 				{
 					type: 'number',
 					label: 'Seconds',
@@ -60,13 +58,13 @@ module.exports = {
 					tooltip: 'Set Player Position to this position (in seconds)',
 					default: 10,
 					required: true,
-					range: false
-				}
+					range: false,
+				},
 			],
 			callback: async (action) => {
-				self.sendCommand('setPlayerPosition', action.options.seconds);
-			}
-		};
+				self.sendCommand('setPlayerPosition', action.options.seconds)
+			},
+		}
 
 		actions.playTrack = {
 			name: 'Play Track By ID',
@@ -75,15 +73,14 @@ module.exports = {
 					type: 'textinput',
 					id: 'track',
 					label: 'Track ID',
-					default: 'spotify:track:'
-
-				}
+					default: 'spotify:track:',
+				},
 			],
 			callback: async (action) => {
-				let track = action.options.track;
-				self.sendCommand('playtrack', track);
-			}
-		};
+				let track = action.options.track
+				self.sendCommand('playtrack', track)
+			},
+		}
 
 		actions.playTrackInContext = {
 			name: 'Play Track In Context By ID',
@@ -92,55 +89,53 @@ module.exports = {
 					type: 'textinput',
 					id: 'track',
 					label: 'Track ID',
-					default: 'spotify:track:'
-
+					default: 'spotify:track:',
 				},
 				{
 					type: 'textinput',
 					id: 'context',
 					label: 'Context ID',
-					default: 'spotify:album:'
-
-				}
+					default: 'spotify:album:',
+				},
 			],
 			callback: async (action) => {
-				let track = action.options.track;
-				let context = action.options.context;
-				self.sendCommand('playtrackincontext', track, context);
-			}
-		};
+				let track = action.options.track
+				let context = action.options.context
+				self.sendCommand('playtrackincontext', track, context)
+			},
+		}
 
 		actions.next = {
 			name: 'Next Track',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('next');
-			}
-		};
+				self.sendCommand('next')
+			},
+		}
 
 		actions.previous = {
 			name: 'Previous Track',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('previous');
-			}
-		};
+				self.sendCommand('previous')
+			},
+		}
 
 		actions.volumeUp = {
 			name: 'Volume Up',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('volumeUp');
-			}
-		};
+				self.sendCommand('volumeUp')
+			},
+		}
 
 		actions.volumeDown = {
 			name: 'Volume Down',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('volumeDown');
-			}
-		};
+				self.sendCommand('volumeDown')
+			},
+		}
 
 		actions.setVolume = {
 			name: 'Set Volume',
@@ -155,14 +150,14 @@ module.exports = {
 					default: 50,
 					step: 1,
 					required: true,
-					range: false
-				}
+					range: false,
+				},
 			],
 			callback: async (action) => {
-				let volume = action.options.volume;
-				self.sendCommand('setVolume', volume);
-			}
-		};
+				let volume = action.options.volume
+				self.sendCommand('setVolume', volume)
+			},
+		}
 
 		actions.rampVolume = {
 			name: 'Ramp Volume',
@@ -177,7 +172,7 @@ module.exports = {
 					default: 50,
 					step: 1,
 					required: true,
-					range: false
+					range: false,
 				},
 				{
 					type: 'number',
@@ -189,7 +184,7 @@ module.exports = {
 					default: 5,
 					step: 1,
 					required: true,
-					range: false
+					range: false,
 				},
 				{
 					type: 'number',
@@ -201,65 +196,65 @@ module.exports = {
 					default: 5,
 					step: 1,
 					required: true,
-					range: false
-				}
+					range: false,
+				},
 			],
 			callback: async (action) => {
-				let volume = parseInt(action.options.volume);
-				let changePercent = parseInt(action.options.changePercent);
-				let rampTime = parseInt(action.options.rampTime);
-				self.sendCommand('rampVolume', volume, changePercent, rampTime);
-			}
-		};
+				let volume = parseInt(action.options.volume)
+				let changePercent = parseInt(action.options.changePercent)
+				let rampTime = parseInt(action.options.rampTime)
+				self.sendCommand('rampVolume', volume, changePercent, rampTime)
+			},
+		}
 
 		actions.mute = {
 			name: 'Volume Mute',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('mute');
-			}
-		};
+				self.sendCommand('mute')
+			},
+		}
 
 		actions.unmute = {
 			name: 'Volume Unmute',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('unmute');
-			}
-		};
+				self.sendCommand('unmute')
+			},
+		}
 
 		actions.repeatOn = {
 			name: 'Repeat On',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('repeatOn');
-			}
-		};
+				self.sendCommand('repeatOn')
+			},
+		}
 
 		actions.repeatOff = {
 			name: 'Repeat Off',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('repeatOff');
-			}
-		};
+				self.sendCommand('repeatOff')
+			},
+		}
 
 		actions.shuffleOn = {
 			name: 'Shuffle On',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('shuffleOn');
-			}
-		};
+				self.sendCommand('shuffleOn')
+			},
+		}
 
 		actions.shuffleOff = {
 			name: 'Shuffle Off',
 			options: [],
 			callback: async (action) => {
-				self.sendCommand('shuffleOff');
-			}
-		};
+				self.sendCommand('shuffleOff')
+			},
+		}
 
-		this.setActionDefinitions(actions);
-	}
+		this.setActionDefinitions(actions)
+	},
 }

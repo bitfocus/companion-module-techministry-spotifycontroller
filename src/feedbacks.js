@@ -5,7 +5,7 @@ module.exports = {
 	// #### Define Feedbacks ####
 	// ##########################
 	initFeedbacks: function () {
-		let feedbacks = {};
+		let feedbacks = {}
 
 		const foregroundColor = combineRgb(255, 255, 255) // White
 		const backgroundColorRed = combineRgb(255, 0, 0) // Red
@@ -25,23 +25,23 @@ module.exports = {
 					id: 'state',
 					default: 'Playing',
 					choices: [
-						{ id: 'Playing', label: 'Playing'},
-						{ id: 'Paused', label: 'Paused'},
-						{ id: 'Stopped', label: 'Stopped'}
-					]
-				}
+						{ id: 'Playing', label: 'Playing' },
+						{ id: 'Paused', label: 'Paused' },
+						{ id: 'Stopped', label: 'Stopped' },
+					],
+				},
 			],
 			callback: async (event) => {
-				let opt = event.options;
+				let opt = event.options
 
 				if (this.STATUS.playbackInfo && this.STATUS.playbackInfo.playerState) {
 					if (this.STATUS.playbackInfo.playerState == opt.state) {
-						return true;
+						return true
 					}
 				}
 
 				return false
-			}
+			},
 		}
 
 		feedbacks.shuffling = {
@@ -59,20 +59,20 @@ module.exports = {
 					id: 'state',
 					default: true,
 					choices: [
-						{ id: false, label: 'Off'},
-						{ id: true, label: 'On'}
-					]
-				}
+						{ id: false, label: 'Off' },
+						{ id: true, label: 'On' },
+					],
+				},
 			],
 			callback: async (event) => {
-				let opt = event.options;
+				let opt = event.options
 
 				if (this.STATUS.state.isShuffling == opt.state) {
-					return true;
+					return true
 				}
 
 				return false
-			}
+			},
 		}
 
 		feedbacks.repeating = {
@@ -90,23 +90,22 @@ module.exports = {
 					id: 'state',
 					default: true,
 					choices: [
-						{ id: false, label: 'Off'},
-						{ id: true, label: 'On'}
-					]
-				}
+						{ id: false, label: 'Off' },
+						{ id: true, label: 'On' },
+					],
+				},
 			],
 			callback: async (event) => {
-				let opt = event.options;
+				let opt = event.options
 
 				if (this.STATUS.state.isRepeating == opt.state) {
-					return true;
+					return true
 				}
 
 				return false
-			}
+			},
 		}
 
-
-		this.setFeedbackDefinitions(feedbacks);
-	}
+		this.setFeedbackDefinitions(feedbacks)
+	},
 }
