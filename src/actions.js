@@ -74,10 +74,12 @@ module.exports = {
 					id: 'track',
 					label: 'Track ID',
 					default: 'spotify:track:',
+					useVariables: true,
 				},
 			],
 			callback: async (action) => {
-				let track = action.options.track
+				let track = await self.parseVariablesInString(action.options.track)
+
 				self.sendCommand('playtrack', track)
 			},
 		}
@@ -90,17 +92,20 @@ module.exports = {
 					id: 'track',
 					label: 'Track ID',
 					default: 'spotify:track:',
+					useVariables: true,
 				},
 				{
 					type: 'textinput',
 					id: 'context',
 					label: 'Context ID',
 					default: 'spotify:album:',
+					useVariables: true,
 				},
 			],
 			callback: async (action) => {
-				let track = action.options.track
-				let context = action.options.context
+				let track = await self.parseVariablesInString(action.options.track)
+				let context = await self.parseVariablesInString(action.options.context)
+
 				self.sendCommand('playtrackincontext', track, context)
 			},
 		}
