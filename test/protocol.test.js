@@ -28,7 +28,7 @@ class HostBoundary {
 		this.values = values
 	}
 	async parseVariablesInString(value) {
-		return value.replace('$(test:track)', 'spotify:track:123')
+		return typeof value === 'string' ? value.replace('$(test:track)', 'spotify:track:123') : value
 	}
 }
 vm.runInNewContext(fs.readFileSync(path.join(root, 'index.js'), 'utf8'), {
