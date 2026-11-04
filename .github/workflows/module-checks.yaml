@@ -93,7 +93,7 @@ jobs:
           esac
 
           echo "Using Node.js $NODE_VERSION"
-          echo "version=$NODE_VERSION" >> $GITHUB_OUTPUT
+          echo "version=$NODE_VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Use Node.js ${{ steps.determine-nodejs.outputs.version }}
         uses: actions/setup-node@v6
@@ -119,9 +119,11 @@ jobs:
       - name: Collect info
         shell: bash
         id: collect-info
+        env:
+          REQUESTED_REF: ${{ inputs.git-ref }}
         run: |
           MODULE_NAME="${{ inputs.repository-name }}"
-          MODULE_NAME=$(basename $MODULE_NAME) # remove the owner from the repository name
+          MODULE_NAME=$(basename "$MODULE_NAME") # remove the owner from the repository name
 
           # determine the type, to be either connection (module) or surface
           if [[ "$MODULE_NAME" == companion-module-* ]]; then
@@ -136,8 +138,8 @@ jobs:
           MODULE_NAME=${MODULE_NAME#companion-module-} # remove the companion-module- prefix
           MODULE_NAME=${MODULE_NAME#companion-surface-} # remove the companion-surface- prefix
 
-          echo "module-name=$MODULE_NAME" >> $GITHUB_OUTPUT
-          echo "module-type=$MODULE_TYPE" >> $GITHUB_OUTPUT
+          echo "module-name=$MODULE_NAME" >> "$GITHUB_OUTPUT"
+          echo "module-type=$MODULE_TYPE" >> "$GITHUB_OUTPUT"
 
           MANIFEST_ID=$(jq '.["id"]' companion/manifest.json)
           if [ ! "$MANIFEST_ID" == "\"${MODULE_NAME}\"" ]; then
@@ -146,11 +148,11 @@ jobs:
           fi
 
           IS_BUILDING_VERSION=""
-          if [ ! -z "${{ inputs.git-ref }}" ]; then
+          if [ -n "$REQUESTED_REF" ]; then
             # is building a proper version, use the ref that was requested
-            IS_BUILDING_VERSION="\"${{ inputs.git-ref }}\""
-          elif [[ "${{ github.ref }}" == refs/tags/* ]]; then 
-            IS_BUILDING_VERSION="${{ github.ref }}"
+            IS_BUILDING_VERSION="\"$REQUESTED_REF\""
+          elif [[ "$GITHUB_REF" == refs/tags/* ]]; then 
+            IS_BUILDING_VERSION="$GITHUB_REF"
             IS_BUILDING_VERSION="\"${IS_BUILDING_VERSION#refs/tags/}\""
           fi
 
@@ -173,9 +175,9 @@ jobs:
             exit 99
           fi
 
-          if [[ "{{ github.repository }}" == companion-module-* ]] || [[ "{{ github.repository }}" == companion-surface-* ]]; then
+          if [[ "${GITHUB_REPOSITORY#*/}" == companion-module-* ]] || [[ "${GITHUB_REPOSITORY#*/}" == companion-surface-* ]]; then
             # only run this check when in modules
-            if ! jq -e '.runtime.apiVersion === "0.0.0"' companion/manifest.json > /dev/null; then
+            if ! jq -e '.runtime.apiVersion == "0.0.0"' companion/manifest.json > /dev/null; then
               echo "Module manifest should have default 0.0.0 runtime.apiVersion"
               exit 99
             fi
