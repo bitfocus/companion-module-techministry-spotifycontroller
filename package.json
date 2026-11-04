@@ -3,7 +3,7 @@
 	"version": "2.3.0",
 	"main": "index.js",
 	"scripts": {
-		"test": "node --test",
+		"test": "echo \"Error: no test specified\" && exit 1",
 		"format": "prettier --write ."
 	},
 	"repository": {
@@ -17,8 +17,7 @@
 	},
 	"devDependencies": {
 		"@companion-module/tools": "^2.9.0",
-		"prettier": "^3.5.3",
-		"socket.io": "~4.8.1"
+		"prettier": "^3.5.3"
 	},
 	"packageManager": "yarn@1.22.22"
 }
